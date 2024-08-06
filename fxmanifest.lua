@@ -7,6 +7,9 @@ version '1.17.2'
 
 ox_lib 'locale'
 
+resource_type2 'gametype' { name = 'RolePlay' }
+resource_type 'map' { gameTypes = { ['San Andreas'] = true } }
+
 shared_scripts {
     '@ox_lib/init.lua',
     'modules/lib.lua',
@@ -63,6 +66,17 @@ dependencies {
     'ox_lib',
     'oxmysql',
 }
+
+server_export "getCurrentGameType"
+server_export "getCurrentMap"
+server_export "changeGameType"
+server_export "changeMap"
+server_export "doesMapSupportGameType"
+server_export "getMaps"
+server_export "roundEnded"
+
+provide 'mapmanager'
+provide 'spawnmanager'
 
 provide 'qb-core'
 lua54 'yes'
